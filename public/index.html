@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Git Seminar Board</title>
+
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/api.js" defer></script>
+  <script src="/js/dom.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Git Seminar Board</h1>
+    <p>Git과 GitHub 실습을 위한 로컬 게시판 예제</p>
+  </header>
+
+  <main class="container">
+    <section class="card" aria-labelledby="form-title">
+      <h2 id="form-title" class="section-title">게시글 작성</h2>
+
+      <form id="post-form" class="post-form">
+        <input type="hidden" id="post-id" />
+
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            maxlength="80"
+            placeholder="제목을 입력하세요"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="author">작성자</label>
+          <input
+            id="author"
+            name="author"
+            type="text"
+            maxlength="30"
+            placeholder="작성자 이름을 입력하세요"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="content">내용</label>
+          <textarea
+            id="content"
+            name="content"
+            maxlength="2000"
+            placeholder="내용을 입력하세요"
+            required
+          ></textarea>
+        </div>
+
+        <div class="button-row">
+          <button type="submit" id="submit-button" class="button primary">
+            등록하기
+          </button>
+          <button type="button" id="cancel-edit-button" class="button secondary hidden">
+            수정 취소
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="list-title">
+      <div class="section-header">
+        <h2 id="list-title" class="section-title">게시글 목록</h2>
+        <span id="post-count" class="post-count">0개</span>
+      </div>
+
+      <div class="search-area">
+        <label for="search" class="sr-only">게시글 검색</label>
+        <input id="search" type="search" placeholder="제목, 작성자, 내용 검색" />
+        <button type="button" id="reset-search-button" class="button secondary">
+          초기화
+        </button>
+      </div>
+
+      <div id="post-list" class="post-list"></div>
+    </section>
+
+    <section id="detail-section" class="card hidden" aria-labelledby="detail-title">
+      <h2 class="section-title">게시글 상세</h2>
+
+      <article>
+        <h3 id="detail-title" class="detail-title"></h3>
+        <p id="detail-meta" class="detail-meta"></p>
+        <p id="detail-content" class="detail-content"></p>
+      </article>
+
+      <div class="button-row">
+        <button type="button" id="edit-button" class="button secondary">
+          수정하기
+        </button>
+        <button type="button" id="delete-button" class="button danger">
+          삭제하기
+        </button>
+        <button type="button" id="close-detail-button" class="button secondary">
+          닫기
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made for Git & GitHub Practice</p>
+  </footer>
+</body>
+</html>
